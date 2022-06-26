@@ -48,4 +48,3 @@ extension RecommendSectionView: UICollectionViewDataSource {
 extension RecommendSectionView: UICollectionViewDelegateFlowLayout {
     
 }
-
