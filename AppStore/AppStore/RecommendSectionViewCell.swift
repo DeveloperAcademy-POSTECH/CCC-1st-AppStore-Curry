@@ -92,8 +92,9 @@ final class RecommendSectionViewCell: UICollectionViewCell {
     }()
     
     private lazy var blurView: UIVisualEffectView = {
-        let blurEffect = UIBlurEffect(style: .light)
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
         let effectView = UIVisualEffectView(effect: blurEffect)
+        effectView.layer.cornerRadius = 7.0
 
         return effectView
     }()

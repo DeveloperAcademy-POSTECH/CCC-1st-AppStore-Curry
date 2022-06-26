@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 
+//TODO: 가로스크롤 미동작 오류 해결필요
 final class RecommendSectionView: UIView {
     private lazy var collectionView: UICollectionView = {
        let layout = UICollectionViewFlowLayout()
@@ -28,6 +29,8 @@ final class RecommendSectionView: UIView {
        
         return collectionView
     }()
+    
+    private let separatorView = SeparatorView(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,22 +69,29 @@ extension RecommendSectionView: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        40.0
+        40
     }
 }
 
 extension RecommendSectionView {
     func setupView() {
         [
+            separatorView,
             collectionView
         ].forEach { addSubview($0) }
         
+        separatorView.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.height.equalTo(0.5)
+        }
+
         collectionView.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.top.equalToSuperview().inset(4.0)
+            $0.top.equalTo(separatorView.snp.bottom)
             $0.height.equalTo(snp.width)
-            $0.bottom.equalToSuperview()
         }
     }
 }
