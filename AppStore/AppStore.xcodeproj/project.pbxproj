@@ -14,6 +14,7 @@
 		55A0A45B2868532300945C74 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A0A45A2868532300945C74 /* TabBarController.swift */; };
 		55A0A45D286865CB00945C74 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A0A45C286865CB00945C74 /* AppViewController.swift */; };
 		55A0A460286886EE00945C74 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 55A0A45F286886EE00945C74 /* SnapKit */; };
+		55A0A4622868899E00945C74 /* RecommendSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A0A4612868899E00945C74 /* RecommendSectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		55A0A45928684D9B00945C74 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		55A0A45A2868532300945C74 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		55A0A45C286865CB00945C74 /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
+		55A0A4612868899E00945C74 /* RecommendSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendSectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				55113C772857BF4100B2AE5D /* AppDelegate.swift */,
 				55113C792857BF4100B2AE5D /* SceneDelegate.swift */,
 				55A0A45C286865CB00945C74 /* AppViewController.swift */,
+				55A0A4612868899E00945C74 /* RecommendSectionView.swift */,
 				55A0A45A2868532300945C74 /* TabBarController.swift */,
 				55113C802857BF4300B2AE5D /* Assets.xcassets */,
 				55113C822857BF4300B2AE5D /* LaunchScreen.storyboard */,
@@ -169,6 +172,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A0A4622868899E00945C74 /* RecommendSectionView.swift in Sources */,
 				55A0A45B2868532300945C74 /* TabBarController.swift in Sources */,
 				55113C782857BF4100B2AE5D /* AppDelegate.swift in Sources */,
 				55A0A45D286865CB00945C74 /* AppViewController.swift in Sources */,
