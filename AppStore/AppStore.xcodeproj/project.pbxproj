@@ -24,6 +24,7 @@
 		55113C802857BF4300B2AE5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55113C832857BF4300B2AE5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55113C852857BF4300B2AE5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55A0A45928684D9B00945C74 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +57,7 @@
 		55113C762857BF4100B2AE5D /* AppStore */ = {
 			isa = PBXGroup;
 			children = (
+				55A0A45928684D9B00945C74 /* .swiftlint.yml */,
 				55113C772857BF4100B2AE5D /* AppDelegate.swift */,
 				55113C792857BF4100B2AE5D /* SceneDelegate.swift */,
 				55113C7B2857BF4100B2AE5D /* ViewController.swift */,
@@ -74,6 +76,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55113C882857BF4300B2AE5D /* Build configuration list for PBXNativeTarget "AppStore" */;
 			buildPhases = (
+				55A0A45628684CCB00945C74 /* SwiftLint Script */,
 				55113C702857BF4100B2AE5D /* Sources */,
 				55113C712857BF4100B2AE5D /* Frameworks */,
 				55113C722857BF4100B2AE5D /* Resources */,
@@ -132,6 +135,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		55A0A45628684CCB00945C74 /* SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		55113C702857BF4100B2AE5D /* Sources */ = {
@@ -287,6 +311,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8B3RT7D582;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AppStore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -314,6 +339,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8B3RT7D582;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AppStore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
