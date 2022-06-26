@@ -7,9 +7,24 @@
 
 import UIKit
 
-class TabBarController: UIViewController {
+class TabBarController: UITabBarController {
 
+    private lazy var appViewController: UIViewController = {
+        let viewController = UINavigationController(rootViewController: AppViewController())
+        let tabBarItem = UITabBarItem(
+            title: "앱",
+            image: UIImage(systemName: "square.3.stack.3d"),
+            tag: 1
+        )
+        
+        viewController.tabBarItem = tabBarItem
+        
+        return viewController
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewControllers = [appViewController]
     }
 }
