@@ -18,6 +18,12 @@ class AppViewController: UIViewController {
         stackView.distribution = .equalSpacing
         stackView.spacing = 0.0
         
+        let recommendSectionView = RecommendSectionView(frame: .zero)
+        
+        [
+            recommendSectionView
+        ].forEach { stackView.addArrangedSubview($0) }
+        
         return stackView
     }()
     
@@ -31,6 +37,7 @@ class AppViewController: UIViewController {
         super.viewDidLoad()
         
         setUpNavigationController()
+        setupLayout()
     }
     
 }
