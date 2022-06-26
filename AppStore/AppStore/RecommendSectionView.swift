@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-//TODO: 가로스크롤 미동작 오류 해결필요
+// TODO: 가로스크롤 미동작 오류 해결필요
 final class RecommendSectionView: UIView {
     private lazy var collectionView: UICollectionView = {
        let layout = UICollectionViewFlowLayout()
@@ -90,8 +90,8 @@ extension RecommendSectionView {
         collectionView.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.top.equalTo(separatorView.snp.bottom)
-            $0.height.equalTo(snp.width)
+            $0.top.equalTo(separatorView.snp.bottom).offset(8.0)
+            $0.height.equalTo(325.0)
         }
     }
 }
