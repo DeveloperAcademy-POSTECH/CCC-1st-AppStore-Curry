@@ -67,7 +67,7 @@ extension EventSectionView: UICollectionViewDataSource {
 
 extension EventSectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: collectionView.frame.width - 40.0, height: 320.0)
+        CGSize(width: collectionView.frame.width - 40.0, height: 330.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

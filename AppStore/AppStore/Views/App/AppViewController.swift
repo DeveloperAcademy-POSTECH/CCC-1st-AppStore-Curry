@@ -21,11 +21,15 @@ class AppViewController: UIViewController {
         let recommendSectionView = RecommendSectionView(frame: .zero)
         let rankingSectionView = RankingSectionView(frame: .zero)
         let eventSectionView = EventSectionView(frame: .zero)
+        let exchangeCodeButtonView = ExchangeCodeButtonView(frame: .zero)
+        let agreementUtilizationView = AgreementUtilizationView(frame: .zero)
         
         [
             recommendSectionView,
             rankingSectionView,
-            eventSectionView
+            eventSectionView,
+            exchangeCodeButtonView,
+            agreementUtilizationView
         ].forEach { stackView.addArrangedSubview($0) }
         
         return stackView
