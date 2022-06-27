@@ -73,8 +73,8 @@ final class RecommendSectionViewCell: UICollectionViewCell {
     private lazy var downloadButton: UIButton = {
         let button = UIButton()
         button.setTitle("받기", for: .normal)
-        button.setTitleColor(.systemBackground, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 14.0, weight: .semibold)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 14.0, weight: .bold)
         button.backgroundColor = .secondarySystemBackground
         button.layer.cornerRadius = 12.0
         button.layer.opacity = 0.9

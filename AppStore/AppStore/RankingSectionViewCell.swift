@@ -104,6 +104,5 @@ extension RankingSectionViewCell {
             $0.top.equalTo(titleLabel.snp.bottom)
         }
         
-        
     }
 }

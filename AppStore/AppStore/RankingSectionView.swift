@@ -29,7 +29,7 @@ final class RankingSectionView: UIView {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 40.0
+        layout.minimumLineSpacing = 10.0
         layout.minimumInteritemSpacing = 0.0
         layout.sectionInset = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
         
