@@ -20,10 +20,12 @@ class AppViewController: UIViewController {
         
         let recommendSectionView = RecommendSectionView(frame: .zero)
         let rankingSectionView = RankingSectionView(frame: .zero)
+        let eventSectionView = EventSectionView(frame: .zero)
         
         [
             recommendSectionView,
-            rankingSectionView
+            rankingSectionView,
+            eventSectionView
         ].forEach { stackView.addArrangedSubview($0) }
         
         return stackView
@@ -67,12 +69,15 @@ extension AppViewController {
         contentView.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.width.equalToSuperview()
-            $0.height.equalToSuperview()
+            $0.height.equalTo(scrollView.contentLayoutGuide.snp.height)
         }
         
         contentView.addSubview(stackView)
         stackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.height.equalToSuperview()
         }
     }
 }

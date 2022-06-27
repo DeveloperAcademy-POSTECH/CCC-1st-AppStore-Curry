@@ -1,54 +1,39 @@
 //
-//  RankingSectionView.swift
+//  EventSectionView.swift
 //  AppStore
 //
-//  Created by 이재웅 on 2022/06/27.
+//  Created by 이재웅 on 2022/06/28.
 //
 
 import UIKit
 import SnapKit
 
-final class RankingSectionView: UIView {
+final class EventSectionView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.text = "놓치지 말아야 할 이벤트"
         label.font = .systemFont(ofSize: 20.0, weight: .semibold)
-        label.text = "무료 앱 순위"
         
         return label
     }()
     
-    private lazy var showAllAppsButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("모두 보기", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16.0)
-        
-        return button
-    }()
-    
     private lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
+       let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 10.0
-        layout.minimumInteritemSpacing = 0.0
-        layout.sectionInset = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
         
-        let collectionView = UICollectionView(
-            frame: .zero,
-            collectionViewLayout: layout
-        )
-        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
+        
         collectionView.isPagingEnabled = false
         collectionView.backgroundColor = .systemBackground
         collectionView.showsHorizontalScrollIndicator = false
         
         collectionView.register(
-            RankingSectionViewCell.self,
-            forCellWithReuseIdentifier: "RankingSectionViewCell"
+            EventSectionViewCell.self,
+            forCellWithReuseIdentifier: "EventSectionViewCell"
         )
-        
+       
         return collectionView
     }()
     
@@ -66,28 +51,35 @@ final class RankingSectionView: UIView {
     }
 }
 
-extension RankingSectionView: UICollectionViewDataSource {
+extension EventSectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RankingSectionViewCell", for: indexPath) as? RankingSectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventSectionViewCell", for: indexPath) as? EventSectionViewCell
         
-        cell?.setup(indexPath: indexPath)
+        cell?.setup()
         
         return cell ?? UICollectionViewCell()
     }
 }
 
-extension RankingSectionView: UICollectionViewDelegateFlowLayout {
+extension EventSectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        CGSize(width: collectionView.frame.width - 40.0, height: RankingSectionViewCell.height)
+        CGSize(width: collectionView.frame.width - 40.0, height: 320.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        10.0
     }
 }
 
-extension RankingSectionView: UIScrollViewDelegate {
+extension EventSectionView: UIScrollViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
         
@@ -108,38 +100,31 @@ extension RankingSectionView: UIScrollViewDelegate {
     }
 }
 
-extension RankingSectionView {
+extension EventSectionView {
     func setupView() {
         [
             separatorView,
             titleLabel,
-            showAllAppsButton,
             collectionView
         ].forEach { addSubview($0) }
         
         separatorView.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.top.equalToSuperview().inset(12.0)
+            $0.top.equalToSuperview().inset(20.0)
             $0.height.equalTo(0.5)
         }
         
         titleLabel.snp.makeConstraints {
-            $0.leading.equalTo(separatorView.snp.leading).inset(20.0)
+            $0.leading.equalToSuperview().inset(20.0)
             $0.top.equalTo(separatorView.snp.bottom).offset(12.0)
-            $0.height.equalTo(30.0)
-        }
-        
-        showAllAppsButton.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(20.0)
-            $0.bottom.equalTo(titleLabel.snp.bottom)
         }
         
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(8.0)
-            $0.height.equalTo(RankingSectionViewCell.height * 3)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
+            $0.top.equalTo(titleLabel.snp.bottom).offset(12.0)
+            $0.height.equalTo(310)
             $0.bottom.equalToSuperview()
         }
         
