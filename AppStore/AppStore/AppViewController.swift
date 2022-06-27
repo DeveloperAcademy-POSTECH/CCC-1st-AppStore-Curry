@@ -19,9 +19,11 @@ class AppViewController: UIViewController {
         stackView.spacing = 0.0
         
         let recommendSectionView = RecommendSectionView(frame: .zero)
+        let rankingSectionView = RankingSectionView(frame: .zero)
         
         [
-            recommendSectionView
+            recommendSectionView,
+            rankingSectionView
         ].forEach { stackView.addArrangedSubview($0) }
         
         return stackView
@@ -65,12 +67,12 @@ extension AppViewController {
         contentView.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.width.equalToSuperview()
+            $0.height.equalToSuperview()
         }
         
         contentView.addSubview(stackView)
         stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        
     }
 }

@@ -11,7 +11,7 @@ import SnapKit
 final class RankingSectionView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 24.0, weight: .medium)
+        label.font = .systemFont(ofSize: 20.0, weight: .semibold)
         label.text = "무료 앱 순위"
         
         return label
@@ -44,14 +44,21 @@ final class RankingSectionView: UIView {
         collectionView.backgroundColor = .systemBackground
         collectionView.showsHorizontalScrollIndicator = false
         
-    
+        collectionView.register(
+            RankingSectionViewCell.self,
+            forCellWithReuseIdentifier: "RankingSectionViewCell"
+        )
+        
         return collectionView
     }()
     
-    private let separator = SeparatorView(frame: .zero)
+    private let separatorView = SeparatorView(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        setupView()
+        collectionView.reloadData()
     }
     
     required init?(coder: NSCoder) {
@@ -65,21 +72,53 @@ extension RankingSectionView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RankingSectionViewCell", for: indexPath) as? RankingSectionViewCell
         
-        UICollectionViewCell()
+        cell?.setup(indexPath: indexPath)
+        
+        return cell ?? UICollectionViewCell()
     }
 }
 
 extension RankingSectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        // TODO: height를 cell의 height으로 변경
-        CGSize(width: collectionView.frame.width, height: collectionView.frame.width)
+        CGSize(width: collectionView.frame.width - 40.0, height: RankingSectionViewCell.height)
     }
 }
 
 extension RankingSectionView {
     func setupView() {
+        [
+            separatorView,
+            titleLabel,
+            showAllAppsButton,
+            collectionView
+        ].forEach { addSubview($0) }
+        
+        separatorView.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.top.equalToSuperview().inset(16.0)
+            $0.height.equalTo(0.5)
+        }
+        
+        titleLabel.snp.makeConstraints {
+            $0.leading.equalTo(separatorView.snp.leading).inset(20.0)
+            $0.top.equalTo(separatorView.snp.bottom).offset(12.0)
+        }
+        
+        showAllAppsButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(20.0)
+            $0.bottom.equalTo(titleLabel.snp.bottom)
+        }
+        
+        collectionView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(8.0)
+            $0.height.equalTo(RankingSectionViewCell.height * 3)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+        }
         
     }
 }

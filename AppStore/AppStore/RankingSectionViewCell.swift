@@ -29,14 +29,15 @@ final class RankingSectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 13.0)
         label.textColor = .secondaryLabel
+        label.numberOfLines = 2
         
         return label
     }()
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.layer.cornerRadius = 7.0
-        imageView.layer.borderWidth = 0.5
+        imageView.layer.cornerRadius = 10.0
+        imageView.layer.borderWidth = 0.1
         
         return imageView
     }()
@@ -52,9 +53,10 @@ final class RankingSectionViewCell: UICollectionViewCell {
         return button
     }()
     
-    func setup(indexPath: Int) {
+    func setup(indexPath: IndexPath) {
         setupView()
         
+        rankingLabel.text = "\(indexPath.row + 1)"
         titleLabel.text = "쿠팡플레이"
         descriptionLabel.text = "와우회원을 위한 무제한 스트리밍 서비스"
         
@@ -87,17 +89,18 @@ extension RankingSectionViewCell {
         }
         
         rankingLabel.snp.makeConstraints {
-            $0.leading.equalTo(imageView.snp.trailing)
+            $0.leading.equalTo(imageView.snp.trailing).offset(8.0)
             $0.top.equalTo(imageView.snp.top)
         }
         
         titleLabel.snp.makeConstraints {
-            $0.leading.equalTo(rankingLabel.snp.trailing).offset(4.0)
+            $0.leading.equalTo(rankingLabel.snp.trailing).offset(12.0)
             $0.top.equalTo(imageView.snp.top)
         }
         
         descriptionLabel.snp.makeConstraints {
             $0.leading.equalTo(titleLabel.snp.leading)
+            $0.trailing.equalTo(downloadButton.snp.leading)
             $0.top.equalTo(titleLabel.snp.bottom)
         }
         

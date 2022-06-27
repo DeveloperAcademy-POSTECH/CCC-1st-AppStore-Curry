@@ -69,7 +69,7 @@ extension RecommendSectionView: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        40
+        40.0
     }
 }
 
@@ -90,8 +90,9 @@ extension RecommendSectionView {
         collectionView.snp.makeConstraints {
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.top.equalTo(separatorView.snp.bottom).offset(8.0)
-            $0.height.equalTo(325.0)
+            $0.top.equalTo(separatorView.snp.bottom)
+            $0.height.equalTo(snp.width)
+            $0.bottom.equalToSuperview()
         }
     }
 }
