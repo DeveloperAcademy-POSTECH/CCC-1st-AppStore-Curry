@@ -17,7 +17,7 @@ final class RecommendSectionView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        collectionView.isPagingEnabled = true
+        collectionView.isPagingEnabled = false
         collectionView.backgroundColor = .systemBackground
         collectionView.showsHorizontalScrollIndicator = false
         
@@ -69,6 +69,28 @@ extension RecommendSectionView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         10.0
+    }
+}
+
+// 출처 : https://eunjin3786.tistory.com/203
+extension RecommendSectionView: UIScrollViewDelegate {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        
+        let cellWidth = layout.itemSize.width + layout.minimumLineSpacing + 30.0
+        
+        let estimatedIndex = scrollView.contentOffset.x / cellWidth
+        var index: Int
+        
+        if velocity.x > 0 {
+            index = Int(ceil(estimatedIndex))
+        } else if velocity.x < 0 {
+            index = Int(floor(estimatedIndex))
+        } else {
+            index = Int(round(estimatedIndex))
+        }
+        
+        targetContentOffset.pointee = CGPoint(x: CGFloat(index) * cellWidth, y: 0)
     }
 }
 
